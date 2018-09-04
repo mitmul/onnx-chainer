@@ -7,7 +7,7 @@ This is an add-on package for ONNX support by Chainer.
 
 ## Tested environment
 
-- ONNX 1.2.2
+- ONNX >=1.2.1
 - Chainer 4.4.0
 - Python 2.7.14, 3.5.5, 3.6.5
 
