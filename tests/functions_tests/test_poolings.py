@@ -1,11 +1,10 @@
 import unittest
 
 import numpy as np
+import onnx
 
 import chainer
 import chainer.functions as F
-import onnx
-import onnx_chainer
 from chainer import testing
 from onnx_chainer.testing import test_onnxruntime
 
@@ -13,22 +12,22 @@ from onnx_chainer.testing import test_onnxruntime
 @testing.parameterize(*(testing.product({
     'name': ['max_pooling_2d'],
     'in_shape': [(1, 3, 6, 5)],
-    'args': [[2, 2, 0]],
+    'args': [[2, 2, 0], [2, 2, 1]],
     'cover_all': [False, True],
 }) + testing.product({
     'name': ['average_pooling_2d'],
     'in_shape': [(1, 3, 6, 5)],
-    'args': [[2, 2, 0]],
+    'args': [[2, 2, 0], [3, 2, 1]],
     'cover_all': [None],
 }) + testing.product({
     'name': ['max_pooling_nd'],
     'in_shape': [(1, 3, 6, 5, 4)],
-    'args': [[2, 2, 0]],
+    'args': [[2, 2, 0], [2, 2, 1]],
     'cover_all': [False, True],
 }) + testing.product({
     'name': ['average_pooling_nd'],
     'in_shape': [(1, 3, 6, 5, 4)],
-    'args': [[2, 2, 0]],
+    'args': [[2, 2, 0], [2, 2, 1]],
     'cover_all': [None],
 })))
 class TestPoolings(unittest.TestCase):
